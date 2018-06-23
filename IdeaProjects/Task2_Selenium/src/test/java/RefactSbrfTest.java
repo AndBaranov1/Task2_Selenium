@@ -2,8 +2,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pages.MainPage;
-import pages.Page1;
-import pages.Page2;
+import pages.Blanck1Page;
+import pages.Blanck2Page;
 import pages.TravelsPage;
 
 import java.util.ArrayList;
@@ -43,13 +43,13 @@ public class RefactSbrfTest extends BaseTest {
             driver.switchTo().window(availableWindows.get(1));
         }
         // На вкладке – Выбор полиса  выбрать сумму страховой защиты – Минимальная
-        Page1 page1 = new Page1(driver);
+        Blanck1Page page1 = new Blanck1Page(driver);
         page1.selectSum("Минимальная");
 
         // Нажать Оформить
         page1.issueButton.click();
         // На вкладке Оформление заполнить поля:
-        Page2 page2 = new Page2(driver);
+        Blanck2Page page2 = new Blanck2Page(driver);
         String actualTitle = page2.title3.getText();
         String expectedTitle = "Оформление";
         assertTrue(String.format("Заголовок равен [%s]. Ожидалось - [%s]",
@@ -95,7 +95,9 @@ public class RefactSbrfTest extends BaseTest {
         page2.contButton.click();
 
         // Проверить, что появилось сообщение - Заполнены не все обязательные поля
-        WebElement webElement = driver.findElement(By.xpath("//div[@ng-show='tryNext && myForm.$invalid']"));
-        assertEquals("Заполнены не все обязательные поля", webElement.getText());
+//        WebElement webElement = driver.findElement(By.xpath("//div[@ng-show='tryNext && myForm.$invalid']"));
+//        assertEquals("Заполнены не все обязательные поля", webElement.getText());
+        Blanck2Page blanck2Page = new Blanck2Page(driver);
+        assertEquals("Заполнены не все обязательные поля", blanck2Page.errorMessage.getText());
     }
 }
