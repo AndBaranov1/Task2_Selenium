@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 /**
  * Created by 1 on 08.06.2018.
  */
-public class Page1 {
+public class Blanck1Page {
     @FindBy(xpath = "//h3 [text()='Выберите сумму страховой защиты']/parent::section")
     public WebElement summa;
 
