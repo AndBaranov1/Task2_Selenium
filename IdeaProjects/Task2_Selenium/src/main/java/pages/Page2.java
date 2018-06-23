@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 /**
  * Created by 1 on 09.06.2018.
  */
-public class Page2 {
+public class Blanck2Page {
     @FindBy(xpath = "//span [contains(text(),'Оформление')]")
     public WebElement title3;
 
@@ -54,7 +54,10 @@ public class Page2 {
     @FindBy(xpath = "//span[contains(text(),'Продолжить')]")
     public WebElement contButton;
 
-    public Page2(WebDriver driver) {
+    @FindBy(xpath = "//div[@ng-show='tryNext && myForm.$invalid']")
+    public WebElement errorMessage;
+
+    public Blanck2Page(WebDriver driver) {
         PageFactory.initElements(driver, this);
         Wait<WebDriver> wait = new WebDriverWait(driver, 10, 1000);
         wait.until(ExpectedConditions.visibilityOf(title3));
